@@ -1,23 +1,30 @@
-import logo from "./logo.svg";
 import "./App.css";
-import styles from "./styles";
+import { GlobalStyle, Title, Description, ShopImage } from "./styles";
+import FunkoList from "./components/FunkoList";
+import { ThemeProvider } from "styled-components";
 
-import CookieList from "./components/CookieList";
+const theme = {
+  mainColor: "#00BFFF",
+  backgroundColor: "#F5FFFA",
+  blue: "#191970",
+  itemBorder: "#D3D3D3",
+};
 
 function App() {
   return (
-    <div>
-      <h1 style={styles.texts}>The Best Cookie Shop</h1>
-      <h4 style={styles.texts}>A Delightful Piece of Heaven! </h4>
-      <img
-        src="https://cookienameddesire.com/wp-content/uploads/2015/11/nutella-stuffed-cookies-red-velvet-recipe.jpg"
-        style={styles.images}
-        alt="cookie image"
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Title>The Funko POP Shop</Title>
+
+      <Description>Just one more POP</Description>
+
+      <ShopImage
+        src="https://s3.amazonaws.com/gt7sp-prod/decal/24/42/21/5116090282781214224_1.png"
+        alt="Funko logo"
       />
-      <div style={styles.ListWrapper}>
-        <CookieList />
-      </div>
-    </div>
+
+      <FunkoList />
+    </ThemeProvider>
   );
 }
 
