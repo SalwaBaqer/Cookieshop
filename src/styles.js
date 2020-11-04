@@ -7,6 +7,16 @@ body{
 }
 `;
 
+const ThemeButton = styled.button`
+  font-size: 1em;
+  margin: 1.25em;
+  padding: 0.25em 1em;
+  border-radius: 3px;
+  border-color: ${(props) => props.theme.blue};
+  background-color: ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.mainColor};
+`;
+
 const Title = styled.h1`
   text-align: center;
 `;
@@ -61,4 +71,5 @@ export {
   ShopImage,
   ListWrapper,
   ProductWrapper,
+  ThemeButton,
 };
