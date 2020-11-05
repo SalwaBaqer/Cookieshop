@@ -1,5 +1,6 @@
 const funkos = [
   {
+    id: 1,
     name: "MICHAEL JORDAN",
     price: "6.5 KD",
     image:
@@ -7,6 +8,7 @@ const funkos = [
   },
 
   {
+    id: 2,
     name: "MONICA GELLER",
     price: "8 KD",
     image:
@@ -14,6 +16,7 @@ const funkos = [
   },
 
   {
+    id: 3,
     name: "STAN LEE",
     price: "10 KD",
     image:
@@ -21,6 +24,7 @@ const funkos = [
   },
 
   {
+    id: 4,
     name: "HISOKA",
     price: "6.5 KD",
     image:

@@ -1,4 +1,6 @@
 import "./App.css";
+
+//styles
 import {
   GlobalStyle,
   Title,
@@ -6,9 +8,12 @@ import {
   ShopImage,
   ThemeButton,
 } from "./styles";
+
+//Components
 import FunkoList from "./components/FunkoList";
+
 import { ThemeProvider } from "styled-components";
-import { useDtate, useState } from "react";
+import { useState } from "react";
 
 const theme = {
   light: {
@@ -33,17 +38,16 @@ function App() {
     if (currentTheme === "light") setCurrentTheme("dark");
     else setCurrentTheme("light");
   };
-
-  const changeTheme = (currentTheme) => {
-    if (currentTheme === "light") return "Dark";
-    else return "Light";
-  };
-
-  let ThemeButtonText = changeTheme(currentTheme);
+  //we can use vv instead of ^^
+  // Ternary Operator
+  // const toggleTheme = () =>
+  //   setCurrentTheme(currentTheme === "light" ? "Drak" : "Light");
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-      <ThemeButton onClick={toggleTheme}>{ThemeButtonText}</ThemeButton>
+      <ThemeButton onClick={toggleTheme}>
+        {currentTheme === "light" ? "Drak" : "Light"} Mode
+      </ThemeButton>
       {/* ma y9er decrement()  yro7 ynady el function before I click (mo hatha ely Abeh)*/}
       {/* onClick takheth function onClick={() => what ever i want} */}
 
@@ -55,7 +59,6 @@ function App() {
         src="https://s3.amazonaws.com/gt7sp-prod/decal/24/42/21/5116090282781214224_1.png"
         alt="Funko logo"
       />
-
       <FunkoList />
     </ThemeProvider>
   );
