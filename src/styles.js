@@ -35,6 +35,27 @@ export const ThemeButton = styled.button`
   color: ${(props) => props.theme.mainColor};
 `;
 
+//Go back to the list button
+export const GoBack = styled.button`
+  font-size: 1em;
+  margin: 1.25em;
+  padding: 0.5em 2em;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.mainColor};
+`;
+
+//delete item
+export const DeleteItemStyled = styled.img`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+
+  width: 25px;
+  height: 25px;
+`;
+
 export const Title = styled.h1`
   text-align: center;
 `;
@@ -64,7 +85,7 @@ export const ProductWrapper = styled.div`
   border-width: 4px;
   border-color: ${(props) => props.theme.itemBorder};
   border-radius: 5px;
-  img {
+  .productImage {
     border-bottom-style: solid;
     border-width: 4px;
     border-color: ${(props) => props.theme.itemBorder};
@@ -78,5 +99,26 @@ export const ProductWrapper = styled.div`
   .product-price {
     color: ${(props) => props.theme.blue};
     background-color: ${(props) => props.theme.backgroundColor};
+  }
+`;
+
+export const DetailWrapper = styled.div`
+  img {
+    display: block;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 4px;
+    border-color: ${(props) => props.theme.itemBorder};
+    object-fit: cover;
+  }
+  h1,
+  h3 {
+    display: block;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    color: ${(props) => props.theme.blue};
   }
 `;

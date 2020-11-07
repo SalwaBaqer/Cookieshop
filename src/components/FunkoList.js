@@ -1,20 +1,28 @@
-import funkos from "../funkos";
-import { ListWrapper } from "../styles";
-import FunkoItem from "./FunkoItem";
-import SearchBar from "./SearchBar";
 import { useState } from "react";
 
-const FunkoList = () => {
+// Style
+import { ListWrapper } from "../styles";
+
+//Components
+import FunkoItem from "./FunkoItem";
+import SearchBar from "./SearchBar";
+
+const FunkoList = (props) => {
   const [query, setQuery] = useState("");
 
-  const filteredFunkos = funkos.filter((funko) => {
+  const filteredFunkos = props.funkos.filter((funko) => {
     if (funko.name.toLowerCase().includes(query.toLowerCase())) {
       return true;
     } else return false;
   });
 
   const funkosList = filteredFunkos.map((funko) => (
-    <FunkoItem funkoObject={funko} key={funko.id} />
+    <FunkoItem
+      funko={funko}
+      setFunko={props.setFunko}
+      deleteFunko={props.deleteFunko}
+      key={funko.id}
+    />
   ));
   return (
     <>
