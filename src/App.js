@@ -1,20 +1,21 @@
 import "./App.css";
+
+//from React
 import { useState } from "react";
+import ReactDOM from "react-dom";
+import { Route, Switch } from "react-router";
+import { Link } from "react-router-dom";
+
 import funkos from "./funkos";
 
 //styles
-import {
-  GlobalStyle,
-  Title,
-  Description,
-  ShopImage,
-  ThemeButton,
-} from "./styles";
+import { GlobalStyle, ThemeButton } from "./styles";
 import { ThemeProvider } from "styled-components";
 
 //Components
 import FunkoList from "./components/FunkoList";
 import FunkoDetail from "./components/FunkoDetail";
+import Home from "./components/Home";
 
 const theme = {
   light: {
@@ -43,25 +44,6 @@ function App() {
     setFunkos(updatedFonkos);
   };
 
-  const setView = () => {
-    if (funko)
-      return (
-        <FunkoDetail
-          funko={funko}
-          setFunko={setFunko}
-          deleteFunko={deleteFunko}
-        />
-      );
-    else
-      return (
-        <FunkoList
-          funkos={_funkos}
-          deleteFunko={deleteFunko}
-          setFunko={setFunko}
-        />
-      );
-  };
-
   const toggleTheme = () => {
     if (currentTheme === "light") setCurrentTheme("dark");
     else setCurrentTheme("light");
@@ -73,13 +55,30 @@ function App() {
         {currentTheme === "light" ? "Drak" : "Light"} Mode
       </ThemeButton>
 
-      <Title>The Funko POP Shop</Title>
-      <Description>Just one more POP</Description>
-      <ShopImage
-        src="https://s3.amazonaws.com/gt7sp-prod/decal/24/42/21/5116090282781214224_1.png"
-        alt="Funko logo"
-      />
-      {setView()}
+      <Switch>
+        {/* funkos details */}
+        <Route path="/funkos/:funkoId">
+          <Link to="/funkos">Back to funkos</Link>
+          <FunkoDetail funkos={_funkos} deleteFunko={deleteFunko} />
+        </Route>
+
+        {/* funkos list */}
+        <Route path="/funkos">
+          <Link to="/">To Home page</Link>
+          <FunkoList
+            funkos={_funkos}
+            deleteFunko={deleteFunko}
+            setFunko={setFunko}
+          />
+        </Route>
+        {/* home page */}
+        <Route path="/">
+          <Link to="/funkos">To funkos list</Link>
+          <Home />
+        </Route>
+      </Switch>
+
+      {/* // {setView()} */}
     </ThemeProvider>
   );
 }

@@ -1,24 +1,26 @@
 import React from "react";
 import { DetailWrapper, GoBack } from "../styles";
 import DeleteButton from "./buttons/DeleteButton";
+import { useParams } from "react-router-dom";
 
 const FunkoDetail = (props) => {
-  const funkoprop = props.funko;
+  const funkoId = useParams().funkoId;
+
+  const funko = props.funkos.find((_funko) => _funko.id === +funkoId);
 
   const handleDelete = (funkoId) => {
     props.deleteFunko(funkoId);
-    props.setFunko();
   };
   return (
     <>
-      <GoBack onClick={() => props.setFunko(null)}>Funko List </GoBack>
       <DetailWrapper>
-        <h1>{funkoprop.name}</h1>
-        <img src={funkoprop.image} alt={funkoprop.name} />
-        <h3>Description: {funkoprop.description}</h3>
-        <h3>Price: {funkoprop.price}</h3>
+        <h2>{funko.name}</h2>
+        <img src={funko.image} alt={funko.name} />
+        <h3>Description: </h3>
+        <h4>{funko.description}</h4>
+        <h3>Price: {funko.price}</h3>
       </DetailWrapper>
-      <DeleteButton funkoId={funkoprop.id} deleteFunko={handleDelete} />
+      <DeleteButton funkoId={funko.id} deleteFunko={handleDelete} />
     </>
   );
 };

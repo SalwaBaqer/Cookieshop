@@ -9,7 +9,7 @@ const DeleteButton = (props) => {
 
   return (
     <DeleteItemStyled
-      src="https://lh3.googleusercontent.com/proxy/_PbqfqSL8xaq6xbyvT_0qSWXB96A-nqEEcTivsuqwMN--Cj_UOTQVH6agB95mrxF6bTpQyUakG5D1KRles3QzlxcF6T8mw7MVjq6adjOiXJ8IreDp-fYUEmoSWT2m8y_OI1s"
+      src="https://lh3.googleusercontent.com/proxy/H-JCMUKeB-pJ8D_aRueeeSbz38ZtZN1eny4EjJj1yiEgR35hVy8RDUmpCnqfb1rdeDBydgtffv7jiZoahCS8PpMg6TLzeGD9XTMC3aFILGGVPrAxTomFNOCl9f87KGapH2aA"
       alt={<p>Delete item</p>}
       onClick={handleDelete}
     />

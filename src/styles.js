@@ -68,7 +68,8 @@ export const ShopImage = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  size: 40%;
+  width: 300px;
+  height: 250px;
 `;
 
 export const ListWrapper = styled.div`
@@ -114,7 +115,9 @@ export const DetailWrapper = styled.div`
     object-fit: cover;
   }
   h1,
-  h3 {
+  h2,
+  h3,
+  h4 {
     display: block;
     width: 25%;
     margin-left: auto;
