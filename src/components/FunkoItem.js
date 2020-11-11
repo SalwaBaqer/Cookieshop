@@ -8,7 +8,7 @@ const funkoItem = (props) => {
   return (
     <>
       <ProductWrapper>
-        <Link to={`/funkos/${funko.id}`}>
+        <Link to={`/funkos/${funko.slug}`}>
           <img class="productImage" src={funko.image} alt={funko.name} />
         </Link>
         <h3 class="product-name">{funko.name}</h3>

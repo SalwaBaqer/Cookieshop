@@ -2,6 +2,7 @@ const funkos = [
   {
     id: 1,
     name: "MICHAEL JORDAN",
+    slug: "michael-jordan",
     price: "10.5 KD",
     description: "Pop! Basketball 54, Approx. 4 1/2 tall, Includes stand",
     image:
@@ -11,6 +12,7 @@ const funkos = [
   {
     id: 2,
     name: "MONICA GELLER",
+    slug: "monica-geller",
     price: "14 KD",
     description:
       "Limited Edition Monica with Turkey-Head Pop! Stickers on box may vary.",
@@ -21,6 +23,7 @@ const funkos = [
   {
     id: 3,
     name: "STAN LEE",
+    slug: "stan-lee",
     price: "20 KD",
     description:
       "Marvel Comics FigurePOP Stan Lee Thanos Infinity Gauntlet Boxed Gift ",
@@ -31,6 +34,7 @@ const funkos = [
   {
     id: 4,
     name: "HISOKA",
+    slug: "hisoka",
     price: "6.5 KD",
     description:
       "From Hunter x Hunter, Hisoka, as a stylized Pop.Stylized collectable stands 3 ¾ inches tall, perfect for any Hunter x Hunter fan.",
