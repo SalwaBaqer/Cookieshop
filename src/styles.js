@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { Link } from "react-router-dom";
 
 //Global style for the page
 export const GlobalStyle = createGlobalStyle`
@@ -6,6 +7,17 @@ body{
     color:${(props) => props.theme.mainColor};
     background: ${(props) => props.theme.backgroundColor};
 }
+`;
+
+//Logo
+export const Logo = styled(Link)`
+  padding: 0.75 rem;
+
+  img {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 //to highlight the text in search result
@@ -26,8 +38,7 @@ export const SearchBarStyled = styled.input`
 
 //the theme button from dark to light and....
 export const ThemeButton = styled.button`
-  font-size: 1em;
-  margin: 1.25em;
+  font-size: 0.85em;
   padding: 0.5em 2em;
   border-radius: 3px;
   border-color: ${(props) => props.theme.blue};
