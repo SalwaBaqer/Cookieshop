@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { observer } from "mobx-react";
 
 // Style
 import { ListWrapper } from "../styles";
@@ -8,31 +9,27 @@ import FunkoItem from "./FunkoItem";
 import SearchBar from "./SearchBar";
 import AddButton from "./AddButton";
 
-const FunkoList = (props) => {
+//store
+import funkoStore from "../stores/funkoStore";
+
+const FunkoList = () => {
   const [query, setQuery] = useState("");
 
-  const filteredFunkos = props.funkos.filter((funko) => {
-    if (funko.name.toLowerCase().includes(query.toLowerCase())) {
-      return true;
-    } else return false;
-  });
+  const filteredFunkos = funkoStore.funkos.filter((funko) =>
+    funko.name.toLowerCase().includes(query.toLowerCase())
+  );
 
   const funkosList = filteredFunkos.map((funko) => (
-    <FunkoItem
-      funko={funko}
-      setFunko={props.setFunko}
-      deleteFunko={props.deleteFunko}
-      key={funko.id}
-    />
+    <FunkoItem funko={funko} key={funko.id} />
   ));
   return (
     <>
       <SearchBar setQuery={setQuery} />
-      <AddButton createFunko={props.createFunko} />
+      <AddButton />
 
       <ListWrapper> {funkosList}</ListWrapper>
     </>
   );
 };
 
-export default FunkoList;
+export default observer(FunkoList);

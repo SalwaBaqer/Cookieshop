@@ -1,7 +1,9 @@
+import { useState } from "react";
+
 import { BsPlusCircle } from "react-icons/bs";
 import FunkoModal from "./modals/FunkoModal";
-import { useState } from "react";
-const AddButton = ({ createFunko }) => {
+
+const AddButton = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -9,11 +11,7 @@ const AddButton = ({ createFunko }) => {
   return (
     <>
       <BsPlusCircle className="float-right" size="2em" onClick={openModal} />
-      <FunkoModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        createFunko={createFunko}
-      />
+      <FunkoModal isOpen={isOpen} closeModal={closeModal} />
     </>
   );
 };

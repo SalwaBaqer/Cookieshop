@@ -34,25 +34,10 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light"); //theme state
-  const [funko, setFunko] = useState(null); //srach state
-  const [_funkos, setFunkos] = useState(funkos); //delete state
 
-  const createFunko = (newFunko) => {
-    const updatedFunkos = [..._funkos];
-    updatedFunkos.push(newFunko);
-    setFunkos(updatedFunkos);
-  };
+  const toggleTheme = () =>
+    setCurrentTheme(currentTheme === "light" ? "dark" : "light");
 
-  //Delete method
-  const deleteFunko = (funkoid) => {
-    const updatedFonkos = _funkos.filter((funko) => funko.id !== funkoid);
-    setFunkos(updatedFonkos);
-  };
-
-  const toggleTheme = () => {
-    if (currentTheme === "light") setCurrentTheme("dark");
-    else setCurrentTheme("light");
-  };
   return (
     <>
       <ThemeProvider theme={theme[currentTheme]}>
@@ -60,27 +45,18 @@ function App() {
         <GlobalStyle />
 
         <Switch>
-          {/* funkos details */}
-          <Route path="/funkos/:funkoId">
-            <FunkoDetail funkos={_funkos} deleteFunko={deleteFunko} />
+          <Route path="/funkos/:funkoSlug">
+            <FunkoDetail />
           </Route>
 
-          {/* funkos list */}
           <Route path="/funkos">
-            <FunkoList
-              funkos={_funkos}
-              deleteFunko={deleteFunko}
-              setFunko={setFunko}
-              createFunko={createFunko}
-            />
+            <FunkoList />
           </Route>
-          {/* home page */}
+
           <Route path="/">
             <Home />
           </Route>
         </Switch>
-
-        {/* // {setView()} */}
       </ThemeProvider>
     </>
   );

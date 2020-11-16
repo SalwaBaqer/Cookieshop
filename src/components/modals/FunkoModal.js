@@ -1,8 +1,13 @@
 import Modal from "react-modal";
 import { useState } from "react";
+
+//style
 import { CreateButtonStyled } from "../../styles";
 
-const FunkoModal = ({ isOpen, closeModal, createFunko }) => {
+//store
+import funkoStore from "../../stores/funkoStore";
+
+const FunkoModal = ({ isOpen, closeModal }) => {
   const [funko, setFunko] = useState({
     name: "",
     price: 0,
@@ -15,15 +20,10 @@ const FunkoModal = ({ isOpen, closeModal, createFunko }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createFunko(funko);
+    funkoStore.createFunko(funko);
     closeModal();
   };
 
-  const handleCancel = (event) => {
-    event.preventDefault();
-
-    closeModal();
-  };
   return (
     <Modal
       isOpen={isOpen}
@@ -71,10 +71,18 @@ const FunkoModal = ({ isOpen, closeModal, createFunko }) => {
             onChange={handleChange}
           />
         </div>
-        <CreateButtonStyled onClick={() => handleSubmit}>
-          Create
-        </CreateButtonStyled>
-        <CreateButtonStyled onClick={() => handleCancel}>
+        <CreateButtonStyled onClick={handleSubmit}>Create</CreateButtonStyled>
+        <CreateButtonStyled
+          onClick={() => {
+            setFunko({
+              name: "",
+              price: 0,
+              description: "",
+              image: "",
+            });
+            closeModal();
+          }}
+        >
           Cancel
         </CreateButtonStyled>
       </form>
