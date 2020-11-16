@@ -8,7 +8,7 @@ const SearchBar = (props) => {
   return (
     <Searchtext>
       <SearchBarStyled
-        placeholder="Search for a funko name"
+        placeholder="Search for a funko"
         onChange={(event) => {
           props.setQuery(event.target.value);
         }}

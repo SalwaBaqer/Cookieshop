@@ -6,6 +6,7 @@ import { ListWrapper } from "../styles";
 //Components
 import FunkoItem from "./FunkoItem";
 import SearchBar from "./SearchBar";
+import AddButton from "./AddButton";
 
 const FunkoList = (props) => {
   const [query, setQuery] = useState("");
@@ -27,6 +28,8 @@ const FunkoList = (props) => {
   return (
     <>
       <SearchBar setQuery={setQuery} />
+      <AddButton createFunko={props.createFunko} />
+
       <ListWrapper> {funkosList}</ListWrapper>
     </>
   );

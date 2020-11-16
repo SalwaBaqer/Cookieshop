@@ -37,6 +37,12 @@ function App() {
   const [funko, setFunko] = useState(null); //srach state
   const [_funkos, setFunkos] = useState(funkos); //delete state
 
+  const createFunko = (newFunko) => {
+    const updatedFunkos = [..._funkos];
+    updatedFunkos.push(newFunko);
+    setFunkos(updatedFunkos);
+  };
+
   //Delete method
   const deleteFunko = (funkoid) => {
     const updatedFonkos = _funkos.filter((funko) => funko.id !== funkoid);
@@ -65,6 +71,7 @@ function App() {
               funkos={_funkos}
               deleteFunko={deleteFunko}
               setFunko={setFunko}
+              createFunko={createFunko}
             />
           </Route>
           {/* home page */}

@@ -1,19 +1,27 @@
 import React from "react";
-import { ThemeButton, Logo } from "../styles";
+import { ThemeButton, Logo, LinkStyled } from "../styles";
 import logo from "../funkologo.png";
 import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Logo to="/">
-        <img src={logo} alt="logo" />
-      </Logo>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav ml-auto">
-          <Link to="/funkos">To funkos list</Link>
+        <div className="navbar-nav mr-auto">
           <ThemeButton onClick={props.toggleTheme}>
-            {props.currentTheme === "light" ? "Drak" : "Light"} Mode
+            {props.currentTheme === "light" ? "Dark" : "Light"} Mode
+          </ThemeButton>
+        </div>
+        <ul className="navbar-nav mr-auto ml-auto">
+          <il>
+            <Logo to="/">
+              <img src={logo} alt="logo" />
+            </Logo>
+          </il>
+        </ul>
+        <div className="navbar-nav ml-auto">
+          <ThemeButton>
+            <Link to="/funkos">To funkos list</Link>{" "}
           </ThemeButton>
         </div>
       </div>

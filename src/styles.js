@@ -6,17 +6,27 @@ export const GlobalStyle = createGlobalStyle`
 body{
     color:${(props) => props.theme.mainColor};
     background: ${(props) => props.theme.backgroundColor};
+
+    p{
+      text-align: center;
+    }
 }
 `;
 
 //Logo
 export const Logo = styled(Link)`
-  padding: 0.75 rem;
-
   img {
     width: 100px;
-    margin-left: auto;
-    margin-right: auto;
+  }
+`;
+
+export const CreateButtonStyled = styled.button`
+  color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.mainColor};
+
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
   }
 `;
 
@@ -94,12 +104,12 @@ export const ListWrapper = styled.div`
 export const ProductWrapper = styled.div`
   margin: 10px;
   border-style: solid;
-  border-width: 4px;
+  border-width: 2px;
   border-color: ${(props) => props.theme.itemBorder};
   border-radius: 5px;
   .productImage {
     border-bottom-style: solid;
-    border-width: 4px;
+    border-width: 2px;
     border-color: ${(props) => props.theme.itemBorder};
     width: 300px;
     height: 300px;
@@ -107,6 +117,7 @@ export const ProductWrapper = styled.div`
   }
   h3 {
     text-align: center;
+    color: ${(props) => props.theme.blue};
   }
   .product-price {
     color: ${(props) => props.theme.blue};
@@ -121,7 +132,7 @@ export const DetailWrapper = styled.div`
     margin-left: auto;
     margin-right: auto;
     border-style: solid;
-    border-width: 4px;
+    border-width: 2px;
     border-color: ${(props) => props.theme.itemBorder};
     object-fit: cover;
   }
