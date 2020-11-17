@@ -7,20 +7,23 @@ import { CreateButtonStyled } from "../../styles";
 //store
 import funkoStore from "../../stores/funkoStore";
 
-const FunkoModal = ({ isOpen, closeModal }) => {
-  const [funko, setFunko] = useState({
-    name: "",
-    price: 0,
-    description: "",
-    image: "",
-  });
+const FunkoModal = ({ isOpen, closeModal, oldFunko }) => {
+  console.log(oldFunko);
+  const [funko, setFunko] = useState(
+    oldFunko ?? {
+      name: "",
+      price: 0,
+      description: "",
+      image: "",
+    }
+  );
   const handleChange = (event) => {
     setFunko({ ...funko, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    funkoStore.createFunko(funko);
+    funkoStore[oldFunko ? "updateFunko" : "createFunko"](funko);
     closeModal();
   };
 
@@ -35,6 +38,7 @@ const FunkoModal = ({ isOpen, closeModal }) => {
           <div className="col-6">
             <label>Name</label>
             <input
+              value={funko.name}
               type="text"
               className="form-control"
               name="name"
@@ -45,6 +49,7 @@ const FunkoModal = ({ isOpen, closeModal }) => {
           <div className="col-6">
             <label>Price</label>
             <input
+              value={funko.price}
               type="number"
               min="6.5"
               className="form-control"
@@ -56,6 +61,7 @@ const FunkoModal = ({ isOpen, closeModal }) => {
         <div className="form-group">
           <label>Description</label>
           <input
+            value={funko.description}
             type="text"
             className="form-control"
             name="description"
@@ -65,21 +71,18 @@ const FunkoModal = ({ isOpen, closeModal }) => {
         <div className="form-group">
           <label>Image</label>
           <input
+            value={funko.image}
             type="text"
             className="form-control"
             name="image"
             onChange={handleChange}
           />
         </div>
-        <CreateButtonStyled onClick={handleSubmit}>Create</CreateButtonStyled>
+        <CreateButtonStyled onClick={handleSubmit}>
+          {oldFunko ? "Update" : "Create"}
+        </CreateButtonStyled>
         <CreateButtonStyled
           onClick={() => {
-            setFunko({
-              name: "",
-              price: 0,
-              description: "",
-              image: "",
-            });
             closeModal();
           }}
         >

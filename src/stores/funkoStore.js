@@ -11,8 +11,15 @@ class FunkoStore {
       funkos: observable,
       createFunko: action,
       deleteFunko: action,
+      updateFunko: action,
     });
   }
+
+  updateFunko = (updatedFunko) => {
+    const funko = this.funkos.find((funko) => funko.id === updatedFunko.id);
+    for (const key in funko) funko[key] = updatedFunko[key];
+    funko.slug = slugify(funko.name);
+  };
 
   createFunko = (newFunko) => {
     newFunko.id = funkos[funkos.length - 1].id + 1;

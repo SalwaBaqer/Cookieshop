@@ -7,6 +7,7 @@ import { DetailWrapper, GoBack } from "../styles";
 
 //buttons
 import DeleteButton from "./buttons/DeleteButton";
+import UpdateButton from "./buttons/UpdateButton";
 
 //store
 import funkoStore from "../stores/funkoStore";
@@ -30,6 +31,7 @@ const FunkoDetail = () => {
         <h4>{funko.description}</h4>
         <h3>Price: {funko.price}</h3>
       </DetailWrapper>
+      <UpdateButton funko={funko} />
       <DeleteButton funkoId={funko.id} />
     </>
   );

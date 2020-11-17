@@ -20,6 +20,20 @@ export const Logo = styled(Link)`
   }
 `;
 
+export const UpdateButtonStyled = styled.button`
+  color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.mainColor};
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  display: block;
+
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
+  }
+`;
+
 export const CreateButtonStyled = styled.button`
   color: ${(props) => props.theme.backgroundColor};
   background-color: ${(props) => props.theme.mainColor};
