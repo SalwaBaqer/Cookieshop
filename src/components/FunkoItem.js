@@ -11,7 +11,7 @@ const funkoItem = ({ funko }) => {
           <img class="productImage" src={funko.image} alt={funko.name} />
         </Link>
         <h3 class="product-name">{funko.name}</h3>
-        <h3 class="product-price">{funko.price}</h3>
+        <h3 class="product-price">{funko.price} KD</h3>
         <UpdateButton funko={funko} />
         <DeleteButton funkoId={funko.id} />
       </ProductWrapper>

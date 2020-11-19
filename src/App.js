@@ -4,8 +4,6 @@ import "./App.css";
 import { useState } from "react";
 import { Route, Switch } from "react-router";
 
-import funkos from "./funkos";
-
 //styles
 import { GlobalStyle } from "./styles";
 import { ThemeProvider } from "styled-components";
