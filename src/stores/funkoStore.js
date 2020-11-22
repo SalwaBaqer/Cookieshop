@@ -19,16 +19,31 @@ class FunkoStore {
     const response = await axios.get("http://localhost:8000/funkos");
     this.funkos = response.data;
   };
-  updateFunko = (updatedFunko) => {
-    const funko = this.funkos.find((funko) => funko.id === updatedFunko.id);
-    for (const key in funko) funko[key] = updatedFunko[key];
-    funko.slug = slugify(funko.name);
+  updateFunko = async (updatedFunko) => {
+    try {
+      await axios.put(
+        `http://localhost:8000/funkos/${updatedFunko.id}`,
+        updatedFunko
+      );
+
+      const funko = this.funkos.find((funko) => funko.id === updatedFunko.id);
+      for (const key in funko) funko[key] = updatedFunko[key];
+      funko.slug = slugify(funko.name);
+    } catch (error) {
+      console.error("FunkoStore -> updateFunko -> error", error);
+    }
   };
 
-  createFunko = (newFunko) => {
-    newFunko.id = this.funkos[this.funkos.length - 1].id + 1;
-    newFunko.slug = slugify(newFunko.name);
-    this.funkos.push(newFunko);
+  createFunko = async (newFunko) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/funkos",
+        newFunko
+      );
+      this.funkos.push(response.data);
+    } catch (error) {
+      console.error("error");
+    }
   };
 
   deleteFunko = async (funkoid) => {
@@ -36,7 +51,7 @@ class FunkoStore {
       await axios.delete(`http://localhost:8000/funkos/${funkoid}`);
       this.funkos = this.funkos.filter((funko) => funkoid !== funko.id);
     } catch (error) {
-      console.log("error");
+      console.error("error");
     }
   };
 }

@@ -1,7 +1,12 @@
+import { observer } from "mobx-react";
+import { Link } from "react-router-dom";
+
+//styles
 import { ProductWrapper } from "../styles";
+
+//buttons
 import DeleteButton from "./buttons/DeleteButton";
 import UpdateButton from "./buttons/UpdateButton";
-import { Link } from "react-router-dom";
 
 const funkoItem = ({ funko }) => {
   return (
@@ -19,4 +24,4 @@ const funkoItem = ({ funko }) => {
   );
 };
 
-export default funkoItem;
+export default observer(funkoItem);
