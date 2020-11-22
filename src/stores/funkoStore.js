@@ -31,8 +31,13 @@ class FunkoStore {
     this.funkos.push(newFunko);
   };
 
-  deleteFunko = (funkoid) => {
-    this.funkos = this.funkos.filter((funko) => funkoid !== funko.id);
+  deleteFunko = async (funkoid) => {
+    try {
+      await axios.delete(`http://localhost:8000/funkos/${funkoid}`);
+      this.funkos = this.funkos.filter((funko) => funkoid !== funko.id);
+    } catch (error) {
+      console.log("error");
+    }
   };
 }
 
