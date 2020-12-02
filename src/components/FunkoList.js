@@ -7,15 +7,11 @@ import { ListWrapper } from "../styles";
 //Components
 import FunkoItem from "./FunkoItem";
 import SearchBar from "./SearchBar";
-import AddButton from "./AddButton";
 
-//store
-import funkoStore from "../stores/funkoStore";
-
-const FunkoList = () => {
+const FunkoList = ({ funkosprop }) => {
   const [query, setQuery] = useState("");
 
-  const filteredFunkos = funkoStore.funkos.filter((funko) =>
+  const filteredFunkos = funkosprop.filter((funko) =>
     funko.name.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -25,7 +21,6 @@ const FunkoList = () => {
   return (
     <>
       <SearchBar setQuery={setQuery} />
-      <AddButton />
 
       <ListWrapper> {funkosList}</ListWrapper>
     </>

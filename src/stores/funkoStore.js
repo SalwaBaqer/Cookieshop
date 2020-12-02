@@ -4,20 +4,25 @@ import slugify from "react-slugify";
 
 class FunkoStore {
   funkos = [];
+  loading = true;
 
   constructor() {
     makeObservable(this, {
       funkos: observable,
+      loading: observable,
       fetchFunkos: action,
       createFunko: action,
       deleteFunko: action,
       updateFunko: action,
     });
   }
+  getFunkosById = (funkoId) =>
+    this.funkos.find((funko) => funko.id === funkoId);
 
   fetchFunkos = async () => {
     const response = await axios.get("http://localhost:8000/funkos");
     this.funkos = response.data;
+    this.loading = false;
   };
   updateFunko = async (updatedFunko) => {
     try {
@@ -34,13 +39,15 @@ class FunkoStore {
     }
   };
 
-  createFunko = async (newFunko) => {
+  createFunko = async (newFunko, shop) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/funkos",
+        `http://localhost:8000/shops/${shop.id}/funkos`,
         newFunko
       );
+
       this.funkos.push(response.data);
+      shop.funkos.push({ id: response.data.id });
     } catch (error) {
       console.error("error");
     }

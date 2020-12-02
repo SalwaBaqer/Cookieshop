@@ -7,7 +7,7 @@ import { CreateButtonStyled } from "../../styles";
 //store
 import funkoStore from "../../stores/funkoStore";
 
-const FunkoModal = ({ isOpen, closeModal, oldFunko }) => {
+const FunkoModal = ({ isOpen, closeModal, oldFunko, shop }) => {
   console.log(oldFunko);
   const [funko, setFunko] = useState(
     oldFunko ?? {
@@ -23,7 +23,7 @@ const FunkoModal = ({ isOpen, closeModal, oldFunko }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    funkoStore[oldFunko ? "updateFunko" : "createFunko"](funko);
+    funkoStore[oldFunko ? "updateFunko" : "createFunko"](funko, shop);
     closeModal();
   };
 

@@ -3,10 +3,12 @@ import { makeObservable, observable, action } from "mobx";
 
 class ShopStore {
   shops = [];
+  loading = true;
 
   constructor() {
     makeObservable(this, {
       shops: observable,
+      loading: observable,
       fetchShops: action,
     });
   }
@@ -14,6 +16,7 @@ class ShopStore {
   fetchShops = async () => {
     const response = await axios.get("http://localhost:8000/shops");
     this.shops = response.data;
+    this.loading = false;
   };
 }
 

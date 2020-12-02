@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import FunkoModal from "./modals/FunkoModal";
 
-const AddButton = () => {
+const AddButton = ({ shop }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -11,7 +11,7 @@ const AddButton = () => {
   return (
     <>
       <BsPlusCircle className="float-right" size="2em" onClick={openModal} />
-      <FunkoModal isOpen={isOpen} closeModal={closeModal} />
+      <FunkoModal isOpen={isOpen} closeModal={closeModal} shop={shop} />
     </>
   );
 };

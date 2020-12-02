@@ -1,5 +1,5 @@
 import "./App.css";
-
+import { observer } from "mobx-react";
 //from React
 import { useState } from "react";
 import { Route, Switch } from "react-router";
@@ -9,12 +9,12 @@ import { GlobalStyle } from "./styles";
 import { ThemeProvider } from "styled-components";
 
 //Components
-import FunkoList from "./components/FunkoList";
-import ShopList from "./components/ShopList";
-import FunkoDetail from "./components/FunkoDetail";
-import ShopDetail from "./components/ShopDetail";
-import Home from "./components/Home";
+import Routes from "./components/Routes";
 import NavBar from "./components/NavBar";
+
+//store
+import funkoStore from "./stores/funkoStore";
+import shopStore from "./stores/shopStore";
 
 const theme = {
   light: {
@@ -43,29 +43,14 @@ function App() {
       <ThemeProvider theme={theme[currentTheme]}>
         <NavBar toggleTheme={toggleTheme} currentTheme={currentTheme} />
         <GlobalStyle />
-
-        <Switch>
-          <Route path="/shops/:shopSlug">
-            <ShopDetail />
-          </Route>
-          <Route path="/shops">
-            <ShopList />
-          </Route>
-          <Route path="/funkos/:funkoSlug">
-            <FunkoDetail />
-          </Route>
-
-          <Route path="/funkos">
-            <FunkoList />
-          </Route>
-
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        {funkoStore.loading || shopStore.loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <Routes />
+        )}
       </ThemeProvider>
     </>
   );
 }
 
-export default App;
+export default observer(App);

@@ -3,7 +3,7 @@ import { Redirect, useParams } from "react-router-dom";
 import { observer } from "mobx-react";
 
 //style
-import { DetailWrapper, GoBack } from "../styles";
+import { DetailWrapper } from "../styles";
 
 //buttons
 import DeleteButton from "./buttons/DeleteButton";

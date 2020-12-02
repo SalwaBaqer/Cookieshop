@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeButton, Logo, LinkStyled } from "../styles";
+import { ThemeButton, Logo } from "../styles";
 import logo from "../funkologo.png";
 import { Link } from "react-router-dom";
 
