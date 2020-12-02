@@ -24,6 +24,11 @@ const NavBar = (props) => {
             <Link to="/funkos">To funkos list</Link>{" "}
           </ThemeButton>
         </div>
+        <div className="navbar-nav ">
+          <ThemeButton>
+            <Link to="/shops">To shops list</Link>{" "}
+          </ThemeButton>
+        </div>
       </div>
     </nav>
   );

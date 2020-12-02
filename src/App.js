@@ -10,7 +10,9 @@ import { ThemeProvider } from "styled-components";
 
 //Components
 import FunkoList from "./components/FunkoList";
+import ShopList from "./components/ShopList";
 import FunkoDetail from "./components/FunkoDetail";
+import ShopDetail from "./components/ShopDetail";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 
@@ -43,6 +45,12 @@ function App() {
         <GlobalStyle />
 
         <Switch>
+          <Route path="/shops/:shopSlug">
+            <ShopDetail />
+          </Route>
+          <Route path="/shops">
+            <ShopList />
+          </Route>
           <Route path="/funkos/:funkoSlug">
             <FunkoDetail />
           </Route>
