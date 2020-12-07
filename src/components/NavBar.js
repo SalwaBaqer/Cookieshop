@@ -2,6 +2,7 @@ import React from "react";
 import { ThemeButton, Logo } from "../styles";
 import logo from "../funkologo.png";
 import { Link } from "react-router-dom";
+import SignupButton from "./buttons/SignupButton";
 
 const NavBar = (props) => {
   return (
@@ -29,6 +30,8 @@ const NavBar = (props) => {
             <Link to="/shops">To shops list</Link>{" "}
           </ThemeButton>
         </div>
+
+        <SignupButton />
       </div>
     </nav>
   );

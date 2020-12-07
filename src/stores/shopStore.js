@@ -1,4 +1,4 @@
-import axios from "axios";
+import instance from "./instance";
 import { makeObservable, observable, action } from "mobx";
 
 class ShopStore {
@@ -14,7 +14,7 @@ class ShopStore {
   }
 
   fetchShops = async () => {
-    const response = await axios.get("http://localhost:8000/shops");
+    const response = await instance.get("/shops");
     this.shops = response.data;
     this.loading = false;
   };

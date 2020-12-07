@@ -1,4 +1,4 @@
-import axios from "axios";
+import instance from "./instance";
 import { makeObservable, observable, action } from "mobx";
 import slugify from "react-slugify";
 
@@ -20,16 +20,13 @@ class FunkoStore {
     this.funkos.find((funko) => funko.id === funkoId);
 
   fetchFunkos = async () => {
-    const response = await axios.get("http://localhost:8000/funkos");
+    const response = await instance.get("http://localhost:8000/funkos");
     this.funkos = response.data;
     this.loading = false;
   };
   updateFunko = async (updatedFunko) => {
     try {
-      await axios.put(
-        `http://localhost:8000/funkos/${updatedFunko.id}`,
-        updatedFunko
-      );
+      await instance.put(`/funkos/${updatedFunko.id}`, updatedFunko);
 
       const funko = this.funkos.find((funko) => funko.id === updatedFunko.id);
       for (const key in funko) funko[key] = updatedFunko[key];
@@ -41,8 +38,8 @@ class FunkoStore {
 
   createFunko = async (newFunko, shop) => {
     try {
-      const response = await axios.post(
-        `http://localhost:8000/shops/${shop.id}/funkos`,
+      const response = await instance.post(
+        `/shops/${shop.id}/funkos`,
         newFunko
       );
 
@@ -55,7 +52,7 @@ class FunkoStore {
 
   deleteFunko = async (funkoid) => {
     try {
-      await axios.delete(`http://localhost:8000/funkos/${funkoid}`);
+      await instance.delete(`/funkos/${funkoid}`);
       this.funkos = this.funkos.filter((funko) => funkoid !== funko.id);
     } catch (error) {
       console.error("error");
