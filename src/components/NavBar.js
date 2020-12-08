@@ -3,6 +3,7 @@ import { ThemeButton, Logo } from "../styles";
 import logo from "../funkologo.png";
 import { Link } from "react-router-dom";
 import SignupButton from "./buttons/SignupButton";
+import SigninButton from "./buttons/SigninButton";
 
 const NavBar = (props) => {
   return (
@@ -32,6 +33,7 @@ const NavBar = (props) => {
         </div>
 
         <SignupButton />
+        <SigninButton />
       </div>
     </nav>
   );
