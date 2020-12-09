@@ -26,6 +26,10 @@ const SigninModal = ({ closeModal, isOpen }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     authStore.signin(user);
+    setUser({
+      username: "",
+      password: "",
+    });
     closeModal();
   };
 

@@ -2,7 +2,6 @@ import "./App.css";
 import { observer } from "mobx-react";
 //from React
 import { useState } from "react";
-import { Route, Switch } from "react-router";
 
 //styles
 import { GlobalStyle } from "./styles";

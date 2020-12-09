@@ -24,6 +24,14 @@ const FunkoModal = ({ isOpen, closeModal, oldFunko, shop }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     funkoStore[oldFunko ? "updateFunko" : "createFunko"](funko, shop);
+    setFunko(
+      oldFunko ?? {
+        name: "",
+        price: 0,
+        description: "",
+        image: "",
+      }
+    );
     closeModal();
   };
 
