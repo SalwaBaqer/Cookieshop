@@ -14,6 +14,7 @@ import AddButton from "./AddButton";
 //store
 import shopStore from "../stores/shopStore";
 import funkoStore from "../stores/funkoStore";
+import authStore from "../stores/authStore";
 
 const ShopDetail = () => {
   const { shopSlug } = useParams();
@@ -33,7 +34,8 @@ const ShopDetail = () => {
         <h2>{shop.name}</h2>
         <img src={shop.image} alt={shop.name} />
       </DetailWrapper>
-      <AddButton shop={shop} />
+      {authStore.user && <AddButton shop={shop} />}
+
       <FunkoList funkosprop={funkosFromStore} />
     </>
   );
