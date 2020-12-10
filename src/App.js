@@ -18,13 +18,13 @@ import shopStore from "./stores/shopStore";
 const theme = {
   light: {
     mainColor: "#00BFFF",
-    backgroundColor: "#F5FFFA",
+    backgroundColor: "white",
     blue: "#191970",
     itemBorder: "#00BFFF",
   },
 
   dark: {
-    mainColor: "#00BFFF",
+    mainColor: "white",
     backgroundColor: "#191970",
     blue: "#F5FFFA",
     itemBorder: "#00BFFF",

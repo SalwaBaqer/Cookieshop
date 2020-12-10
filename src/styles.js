@@ -71,7 +71,7 @@ export const ThemeButton = styled.button`
   margin-right: 2px;
   border-color: ${(props) => props.theme.blue};
   background-color: ${(props) => props.theme.blue};
-  color: ${(props) => props.theme.mainColor};
+  color: ${(props) => props.theme.backgroundColor};
 `;
 
 //Go back to the list button
@@ -171,6 +171,7 @@ export const AuthButtonStyled = styled.button`
   padding: 0.25em 1em;
   margin-left: 0.5em;
   border-radius: 3px;
-  background-color: ${(props) => props.theme.mainColor};
-  color: ${(props) => props.theme.dark};
+  border-color: ${(props) => props.theme.blue};
+  background-color: ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.backgroundColor};
 `;
