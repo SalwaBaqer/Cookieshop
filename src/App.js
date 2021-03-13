@@ -40,8 +40,9 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme[currentTheme]}>
-        <NavBar toggleTheme={toggleTheme} currentTheme={currentTheme} />
         <GlobalStyle />
+        <NavBar toggleTheme={toggleTheme} currentTheme={currentTheme} />
+
         {funkoStore.loading || shopStore.loading ? (
           <h1>Loading...</h1>
         ) : (

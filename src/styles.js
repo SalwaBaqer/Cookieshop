@@ -90,7 +90,6 @@ export const DeleteItemStyled = styled.img`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
-
   width: 25px;
   height: 25px;
 `;
